@@ -1,5 +1,0 @@
-# Main rsyslog.conf
----
-
-# Configure rsyslog.conf
-- include: config.yml
