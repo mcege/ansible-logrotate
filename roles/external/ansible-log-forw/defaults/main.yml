@@ -1,0 +1,6 @@
+# Default parameters
+---
+
+logger_ip: 10.10.10.10
+syslog_facility: local6
+audit_log_destination: /var/log/cmd-audit.log

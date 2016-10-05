@@ -1,0 +1,2 @@
+- src: git+https://github.com/mcege/ansible-logrotate.git
+  name: ansible-logrotate
