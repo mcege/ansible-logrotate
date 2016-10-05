@@ -1,0 +1,12 @@
+{% for item in logrotate_apps %}
+/var/log/{{ item.name }}.log {
+    {{ logrotate_period }}
+    compress
+    delaycompress 
+    missingok
+    notifempty
+    postrotate
+        /etc/init.d/{{ item.name }} reload >/dev/null 2>/dev/null || true
+    endscript
+}
+{% endfor %}

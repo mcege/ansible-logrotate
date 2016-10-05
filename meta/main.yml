@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: mcege
-  description: rsyslog log-forwarding
+  description: logrotate
   license: BSD
   min_ansible_version: 1.4
   #
