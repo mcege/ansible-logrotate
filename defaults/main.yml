@@ -4,7 +4,7 @@
 logrotate_period: daily #eg. daily
 
 vars:
-     - logrotate_apps:
-        - name: snmptrapd
-        - name: sensu
-        - name: mcege
+  logrotate_apps:
+    - name: snmptrapd
+    - name: sensu
+    - name: mcege
