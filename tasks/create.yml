@@ -26,5 +26,5 @@
           /etc/init.d/{{ item.name }} reload >/dev/null 2>/dev/null || true
         endscript
       }
-    with_items:
-      - "{{ logrotate_apps }}"
+  with_items:
+    - "{{ logrotate_apps }}"
