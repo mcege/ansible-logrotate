@@ -34,5 +34,5 @@
     dest: /etc/cron.daily/logrotate
     regexp: "/etc/logrotate.conf"
     insertafter: "/etc/logrotate.conf"
-    line: '>/dev/null 2>&1'
+    line: '/usr/sbin/logrotate /etc/logrotate.conf >/dev/null 2>&1'
 
