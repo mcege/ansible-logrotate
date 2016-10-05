@@ -32,7 +32,7 @@
 - name: Edit cron.daily/logrotate
   lineinfile: 
     dest: /etc/cron.daily/logrotate
-    regexp: ^/etc/logrotate.conf
-    insertafter: ^/etc/logrotate.conf
+    regexp: "/etc/logrotate.conf"
+    insertafter: "/etc/logrotate.conf"
     line: '>/dev/null 2>&1'
 
