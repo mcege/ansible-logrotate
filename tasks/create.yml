@@ -2,11 +2,29 @@
 ---
 
 - name: Create logrotate.d/* files
-  template: 
+  file: 
     src=logrotate.j2
     dest=/etc/logrotate.d/{{ item.name }}
     owner=root
     group=root
     mode=0644
+    state=touch
   with_items: 
     - "{{ logrotate_apps }}"
+
+- name: Edit logrotate.d/* files
+  blockinfile: 
+    dest: /etc/logrotate.d/{{ item.name }}
+    block: |
+      /var/log/{{ item.name }}.log {
+        {{ logrotate_period }}
+        compress
+        delaycompress 
+        missingok
+        notifempty
+        postrotate
+          /etc/init.d/{{ item.name }} reload >/dev/null 2>/dev/null || true
+        endscript
+      }
+    with_items:
+      - "{{ logrotate_apps }}"
