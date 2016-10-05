@@ -1,4 +1,4 @@
-#Create logrotate.d/* files
+#Files
 ---
 
 - name: Create logrotate.d/* files
@@ -28,3 +28,11 @@
       }
   with_items:
     - "{{ logrotate_apps }}"
+
+- name: Edit cron.daily/logrotate
+  lineinfile: 
+    dest: /etc/cron.daily/logrotate
+    regexp: ^/etc/logrotate.conf
+    insertafter: ^/etc/logrotate.conf
+    line: '>/dev/null 2>&1'
+
