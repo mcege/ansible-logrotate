@@ -3,6 +3,7 @@
 
 - name: Find and delete logrotate.d/* files
   shell: grep -l "# BEGIN ANSIBLE MANAGED BLOCK" /etc/logrotate.d/* | xargs rm
+  ignore_errors: true
 
 - name: Create logrotate.d/* files
   file: 
