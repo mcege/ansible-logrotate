@@ -4,6 +4,6 @@
 logrotate_period: daily #eg. daily
 
 logrotate_apps:
-  - name: abc
-  - name: dfe
-  - name: ggh
+  - name: abc1123
+  - name: dfeafa
+  - name: asda

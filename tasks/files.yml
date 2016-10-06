@@ -8,7 +8,6 @@
 
 - name: Delete logrotate.d/* files
   file: 
-    path=/etc/logrotate.d/{{ item }}
     state=absent
   with_items:
     - "{{ grep_result }}" 
