@@ -7,7 +7,7 @@
 
 - name: Create logrotate.d/* files
   template: 
-    src=templates/logrotate_template.j2
+    src=logrotate_template.j2
     dest=/etc/logrotate.d/{{ item.name }}
     owner=root
     group=root
