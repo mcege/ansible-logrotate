@@ -8,6 +8,7 @@
 
 - name: Delete logrotate.d/* files
   file: 
+    path=item
     state=absent
   with_items:
     - "{{ grep_result }}" 
