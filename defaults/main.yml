@@ -5,5 +5,5 @@ logrotate_period: daily #eg. daily
 
 logrotate_apps:
   - name: abc1123
-  - name: amca
-  - name: sensu
+  - name: dayı
+  - name: teyze

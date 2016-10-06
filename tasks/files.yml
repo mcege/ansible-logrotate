@@ -2,35 +2,17 @@
 ---
 
 - name: Find and delete logrotate.d/* files
-  shell: grep -l "# BEGIN ANSIBLE MANAGED BLOCK" /etc/logrotate.d/* | xargs rm
+  shell: grep -l "# LOGROTATE_FILE_CONTROL_STRING" /etc/logrotate.d/* | xargs rm
   ignore_errors: true
 
 - name: Create logrotate.d/* files
-  file: 
-    src=logrotate.j2
+  template: 
+    src=logrotate_template.j2
     dest=/etc/logrotate.d/{{ item.name }}
     owner=root
     group=root
     mode=0644
-    state=touch
   with_items: 
-    - "{{ logrotate_apps }}"
-
-- name: Edit logrotate.d/* files
-  blockinfile: 
-    dest: /etc/logrotate.d/{{ item.name }}
-    block: |
-      /var/log/{{ item.name }}.log {
-        {{ logrotate_period }}
-        compress
-        delaycompress 
-        missingok
-        notifempty
-        postrotate
-          /etc/init.d/{{ item.name }} reload >/dev/null 2>/dev/null || true
-        endscript
-      }
-  with_items:
     - "{{ logrotate_apps }}"
 
 - name: Edit cron.daily/logrotate
