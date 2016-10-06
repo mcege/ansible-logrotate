@@ -1,6 +1,18 @@
 #Files
 ---
 
+- name: Find and register logrotate.d/* files
+  shell: grep -l "# BEGIN ANSIBLE MANAGED BLOCK" /etc/logrotate.d/*
+  register: grep_result
+  ignore_errors: true
+
+- name: Delete logrotate.d/* files
+  file: 
+    path=/etc/logrotate.d/{{ item }}
+    state=absent
+  with_items:
+    - "{{ grep_result }}" 
+
 - name: Create logrotate.d/* files
   file: 
     src=logrotate.j2
@@ -35,4 +47,3 @@
     regexp: "/etc/logrotate.conf"
     insertafter: "/etc/logrotate.conf"
     line: '/usr/sbin/logrotate /etc/logrotate.conf >/dev/null 2>&1'
-

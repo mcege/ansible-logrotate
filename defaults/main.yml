@@ -4,6 +4,6 @@
 logrotate_period: daily #eg. daily
 
 logrotate_apps:
-  - name: snmptrapd
-  - name: sensu
-  - name: mcege
+  - name: abc
+  - name: dfe
+  - name: ggh
