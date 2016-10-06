@@ -4,6 +4,6 @@
 logrotate_period: daily #eg. daily
 
 logrotate_apps:
-  - name: kim
-  - name: ki
-  - name: duk
+  - name: ismail
+  - name: abi
+  - name: hop
