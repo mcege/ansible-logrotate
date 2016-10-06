@@ -1,17 +1,8 @@
 #Files
 ---
 
-- name: Find and register logrotate.d/* files
-  shell: grep -l "# BEGIN ANSIBLE MANAGED BLOCK" /etc/logrotate.d/*
-  register: grep_result
-  ignore_errors: true
-
-- name: Delete logrotate.d/* files
-  file: 
-    path=item
-    state=absent
-  with_items:
-    - "{{ grep_result }}" 
+- name: Find and delete logrotate.d/* files
+  shell: grep -l "# BEGIN ANSIBLE MANAGED BLOCK" /etc/logrotate.d/* | xargs rm
 
 - name: Create logrotate.d/* files
   file: 
